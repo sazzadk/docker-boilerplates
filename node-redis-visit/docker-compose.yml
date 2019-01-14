@@ -1,0 +1,17 @@
+# Simple docker compose
+# to start a redis container
+# and a node js app that counts
+# visitors
+version: '3'
+services: 
+  # Container 1
+  redis-server:
+    restart: unless-stopped
+    image: 'redis'
+  # Container 2
+  # web server runs on port 8080
+  node-app:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
